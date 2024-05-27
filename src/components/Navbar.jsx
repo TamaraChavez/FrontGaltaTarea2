@@ -4,20 +4,8 @@ import styled from 'styled-components'
 import logo from '../img/logo.png';
 const links = [
   {
-    name : "Administración de clientes",
-    href : "/AdmClientes",
-  },
-  {
-    name : "Administración de vehiculos",
-    href : "/AdmVehiculos",
-  },
-  {
-    name : "Alquileres",
-    href : "/Alquileres",
-  },
-  {
-    name : "Catalogos",
-    href : "/Catalogos",
+    name : "Usuarios",
+    href : "/Usuarios",
   },
 
 ]

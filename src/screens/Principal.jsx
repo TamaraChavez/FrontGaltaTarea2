@@ -19,50 +19,16 @@ const Principal = () => {
       <Seccion>
         <ImgPrincipal src={clientes} alt="" />
         <TextoSeccion>
-          <TituloSecundario>Administración de clientes</TituloSecundario>
+          <TituloSecundario>Administración de Usuarios</TituloSecundario>
           <DescripcionSeccion>
-            Gestiona fácilmente la información de tus clientes, desde ver un listado completo hasta agregar, editar o eliminar clientes de forma segura.
+            Gestiona fácilmente la información de tus usuarios, desde ver un listado completo hasta agregar, editar o eliminar usuarios de forma segura.
           </DescripcionSeccion>
           <br />
-          <BotonNavegar as={Link} to="/AdmClientes">IR</BotonNavegar>
+          <BotonNavegar as={Link} to="/Usuarios">IR</BotonNavegar>
         </TextoSeccion>
       </Seccion>
 
-      <Seccion>
-        <TextoSeccion>
-          <TituloSecundario>Administración de vehículos</TituloSecundario>
-          <DescripcionSeccion>
-            Administra tus vehículos de manera eficiente, con funciones para agregar nuevas cuentas, editar detalles existentes y eliminar cuentas de forma segura.
-          </DescripcionSeccion>
-          <br />
-          <BotonNavegar as={Link} to="/AdmVehiculos">IR</BotonNavegar>
-        </TextoSeccion>
-        <ImgPrincipal src={vehiculos} alt="" />
-      </Seccion>
-
-      <Seccion>
-        <ImgPrincipal src={alquiler} alt="" />
-        <TextoSeccion>
-          <TituloSecundario>Realizar Alquiler</TituloSecundario>
-          <DescripcionSeccion>
-            Simplifica la gestión de alquileres de automotores con esta función, que te permite agregar, editar y eliminar alquileres al igual que .
-          </DescripcionSeccion>
-          <br />
-          <BotonNavegar as={Link} to="/Alquileres">IR</BotonNavegar>
-        </TextoSeccion>
-      </Seccion>
-
-      <Seccion>
-        <TextoSeccion>
-          <TituloSecundario>Administración de Catálogos</TituloSecundario>
-          <DescripcionSeccion>
-            Gestiona tus catálogos de características de los automotores de manera organizada, con funciones para agregar, editar y eliminar características fácilmente.
-          </DescripcionSeccion>
-          <br />
-          <BotonNavegar as={Link} to="/Catalogos">IR</BotonNavegar>
-        </TextoSeccion>
-        <ImgPrincipal src={catalogo} alt="" />
-      </Seccion>
+      
     </ContenedorPrincipal>
   );
 };
