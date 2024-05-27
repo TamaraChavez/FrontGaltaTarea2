@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import inicio from '../img/contrasena.png';
 const Login = () => {
@@ -59,7 +59,11 @@ const Login = () => {
           <ImageContainer>
             <StyledImage src={inicio} alt="" />
           </ImageContainer>
+          <LinkContainer>
+            <StyledLink to="/register">Crear usuario</StyledLink>
+          </LinkContainer>
         </StyledForm>
+        
       </FormContainer>
     </Container>
   );
@@ -69,7 +73,7 @@ export default Login;
 
 const Container = styled.div`
   padding: 15px;
-  height: 82vh; /* Altura del contenedor */
+  height: 82vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -94,9 +98,9 @@ const FormContainer = styled.div`
   justify-content: center;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: 100vh; /* Altura del contenedor del formulario */
-  max-height: 60vh; /* Altura máxima del contenedor del formulario */
-  overflow-y: auto; /* Agregar desplazamiento vertical si el contenido excede la altura */
+  height: 100vh;
+  max-height: 60vh;
+  overflow-y: auto;
 `;
 
 const StyledForm = styled.form`
@@ -149,12 +153,28 @@ const ButtonDanger = styled(ButtonBase)`
     background-color: #e55347;
   }
 `;
+
 const ImageContainer = styled.div`
   text-align: center;
   margin-top: 20px;
 `;
 
 const StyledImage = styled.img`
-  width: 200px; /* Ancho deseado */
-  height: auto; /* Altura automática para mantener la proporción */
+  width: 200px;
+  height: auto;
+`;
+
+const LinkContainer = styled.div`
+  text-align: center;
+  margin-top: 20px;
+`;
+
+const StyledLink = styled(Link)`
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
-import logo from '../img/logo.png';
+
 const links = [
   {
     name : "Usuarios",
@@ -14,7 +14,7 @@ const NavBar = () => {
   return (
     <NavContainer>
       <ContenedorLogo>
-        <Link to="/Principal" class="principal" ><img src={logo} alt="Logo" /></Link>
+        <Link to="/Principal" class="principal" ></Link>
       
       </ContenedorLogo>
       <div>
