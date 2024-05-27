@@ -9,10 +9,36 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    try {
     
-    alert("Bienvenido "+username);
-    navigate('/Principal');
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          usuario: username,
+          contrasena: password
+        })
+      });
+
+      const data = await response.json(); 
+
+      //validacion de respuesta
+      if (response.ok && data.message === 'Autenticación exitosa.') {
+        alert("Bienvenido " + username);
+        navigate('/Principal');
+      } else {
+        alert("Error de autenticación: " + data.message);
+      }
+    } catch (error) {
+      // Handle errors here, such as a server error or no connectivity
+      alert("Error de conexión o del servidor: " + error.message);
+      console.error('Login error:', error);
+    }
   };
+
 
   return (
     <Container>
