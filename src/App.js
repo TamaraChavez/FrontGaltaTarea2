@@ -13,7 +13,7 @@ import Footer from './components/footer';
 import Usuarios from './screens/Usuarios';
 import Login from './screens/Login';
 import Principal from './screens/Principal';
-
+import crearCredencial from './screens/CrearCredenciales';
 
 
 
@@ -30,6 +30,7 @@ function AppWrapper() {
           <Route path='/login' element={<Login/>} />
           <Route path='/Principal' element={<Principal/>} />  
           <Route path='/Usuarios' element={<Usuarios/>} />
+          <Route path='/CrearCredenciales' element={<crearCredencial/>} />
       </Routes>
       {<Footer />}
     </div>

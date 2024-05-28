@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import inicio from '../img/contrasena.png';
-const Login = () => {
+
+const CrearCredenciales = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -23,28 +23,25 @@ const Login = () => {
         })
       });
 
-      const data = await response.json(); 
+      const data = await response.json();
 
-      //validación de respuesta
       if (response.ok && data.message === 'Usuario agregado exitosamente') {
         alert("Usuario registrado exitosamente");
-        navigate('/login'); // Navega al login después del registro
+        navigate('/Login'); // Navega al login después del registro
       } else {
         alert("Error en el registro: " + data.message);
       }
     } catch (error) {
-      // Handle errors here, such as a server error or no connectivity
       alert("Error de conexión o del servidor: " + error.message);
       console.error('Register error:', error);
     }
   };
 
-
   return (
     <Container>
-      <h1>Login</h1>
+      <h1>Crear Credenciales</h1>
       <FormContainer>
-        <StyledForm onSubmit={handleLogin}>
+        <StyledForm onSubmit={handleRegister}>
           <InputLabel>
             Username:
             <StyledInput type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -54,7 +51,7 @@ const Login = () => {
             <StyledInput type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </InputLabel>
           <ButtonContainer>
-            <ButtonPrimary type="submit">Login</ButtonPrimary>
+            <ButtonPrimary type="submit">Registrar</ButtonPrimary>
           </ButtonContainer>
           <ImageContainer>
             <StyledImage src={inicio} alt="" />
@@ -65,7 +62,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default CrearCredenciales;
 
 const Container = styled.div`
   padding: 15px;
@@ -141,14 +138,6 @@ const ButtonPrimary = styled(ButtonBase)`
   }
 `;
 
-const ButtonDanger = styled(ButtonBase)`
-  background-color: #ff6347;
-  color: white;
-
-  &:hover {
-    background-color: #e55347;
-  }
-`;
 const ImageContainer = styled.div`
   text-align: center;
   margin-top: 20px;
