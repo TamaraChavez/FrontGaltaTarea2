@@ -13,7 +13,7 @@ const Login = () => {
 
     try {
     
-      const response = await fetch('/login', {
+      const response = await fetch('http://127.0.1:3001/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
