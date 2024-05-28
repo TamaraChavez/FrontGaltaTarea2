@@ -60,9 +60,6 @@ const Login = () => {
           <ImageContainer>
             <StyledImage src={inicio} alt="" />
           </ImageContainer>
-          <LinkContainer>
-            <StyledLink to="/CrearCredenciales">Crear usuario</StyledLink>
-          </LinkContainer>
         </StyledForm>
         
       </FormContainer>
