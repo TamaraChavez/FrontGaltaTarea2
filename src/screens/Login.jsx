@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import inicio from '../img/contrasena.png';
@@ -60,7 +61,7 @@ const Login = () => {
             <StyledImage src={inicio} alt="" />
           </ImageContainer>
           <LinkContainer>
-            <StyledLink to="/register">Crear usuario</StyledLink>
+            <StyledLink to="/CrearCredenciales">Crear usuario</StyledLink>
           </LinkContainer>
         </StyledForm>
         

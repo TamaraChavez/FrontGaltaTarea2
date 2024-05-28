@@ -7,7 +7,6 @@ import {
   useLocation
 } from 'react-router-dom'
 import { Navigate } from 'react-router-dom';
-
 import Navbar from './components/Navbar';
 import Footer from './components/footer';
 import Usuarios from './screens/Usuarios';
