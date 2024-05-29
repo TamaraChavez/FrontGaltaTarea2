@@ -16,17 +16,7 @@ const Principal = () => {
       <ContenedorTitulo>
         <TituloPrincipal>Bienvenido </TituloPrincipal>
       </ContenedorTitulo>
-      <Seccion>
-        <ImgPrincipal src={clientes} alt="" />
-        <TextoSeccion>
-          <TituloSecundario>Administración de Usuarios</TituloSecundario>
-          <DescripcionSeccion>
-            Gestiona fácilmente la información de tus usuarios, desde ver un listado completo hasta agregar, editar o eliminar usuarios de forma segura.
-          </DescripcionSeccion>
-          <br />
-          <BotonNavegar as={Link} to="/Usuarios">IR</BotonNavegar>
-        </TextoSeccion>
-      </Seccion>
+     
 
       
     </ContenedorPrincipal>
