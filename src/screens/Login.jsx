@@ -52,7 +52,7 @@ const Login = () => {
         },
         body: JSON.stringify({
           usuario: username,
-          contrasena: hashedPassword
+          contrasena: password
         })
       });
 
