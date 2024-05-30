@@ -1,18 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import inicio from '../img/contrasena.png';
+
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loginAttempts, setLoginAttempts] = useState(0);
+  const [isLocked, setIsLocked] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(30); // 30 segundos iniciales
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let timer;
+
+    if (isLocked) {
+      timer = setInterval(() => {
+        setTimeLeft((timeLeft) => {
+          if (timeLeft > 1) return timeLeft - 1;
+          clearInterval(timer);
+          setIsLocked(false);
+          setLoginAttempts(0);
+          return 30; // Restablecer tiempo de espera
+        });
+      }, 1000);
+    }
+
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [isLocked]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (isLocked) {
+      alert(`Demasiados intentos fallidos. Intente nuevamente en ${timeLeft} segundos.`);
+      return;
+    }
 
     try {
-    
       const response = await fetch('http://127.0.1:3001/login', {
         method: 'POST',
         headers: {
@@ -26,20 +53,23 @@ const Login = () => {
 
       const data = await response.json(); 
 
-      //validacion de respuesta
       if (response.ok && data.message === 'Autenticación exitosa.') {
         alert("Bienvenido " + username);
         navigate('/Principal');
       } else {
         alert("Error de autenticación: " + data.message);
+        const newLoginAttempts = loginAttempts + 1;
+        setLoginAttempts(newLoginAttempts);
+        if (newLoginAttempts >= 3) {
+          setIsLocked(true);
+          setTimeLeft(30); // Restablece el contador cuando se bloquea
+        }
       }
     } catch (error) {
-      // Handle errors here, such as a server error or no connectivity
       alert("Error de conexión o del servidor: " + error.message);
       console.error('Login error:', error);
     }
   };
-
 
   return (
     <Container>
@@ -55,13 +85,14 @@ const Login = () => {
             <StyledInput type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </InputLabel>
           <ButtonContainer>
-            <ButtonPrimary type="submit">Login</ButtonPrimary>
+            <ButtonPrimary type="submit" disabled={isLocked}>
+              {isLocked ? `Espera ${timeLeft}s` : 'Login'}
+            </ButtonPrimary>
           </ButtonContainer>
           <ImageContainer>
             <StyledImage src={inicio} alt="" />
           </ImageContainer>
         </StyledForm>
-        
       </FormContainer>
     </Container>
   );
