@@ -12,6 +12,10 @@ const Login = () => {
   const [timeLeft, setTimeLeft] = useState(30); // 30 segundos iniciales
   const navigate = useNavigate();
 
+  const hashPassword = (password) => {
+    const hash = CryptoJS.SHA256(password);
+    return hash.toString();
+  }
   useEffect(() => {
     let timer;
 
@@ -40,6 +44,7 @@ const Login = () => {
     }
 
     try {
+      const hashedPassword = hashPassword(password);
       const response = await fetch('http://127.0.1:3001/login', {
         method: 'POST',
         headers: {
@@ -47,7 +52,7 @@ const Login = () => {
         },
         body: JSON.stringify({
           usuario: username,
-          contrasena: password
+          contrasena: hashedPassword
         })
       });
 
